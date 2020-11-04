@@ -1,0 +1,61 @@
+<div class="container">
+<br><br>
+<h2 *ngIf="!editMode; else update">SignUp Here..!!</h2>
+<ng-template #update>
+    <h2>Edit Mode</h2>
+</ng-template>
+    <form #form='ngForm' (ngSubmit)="onSubmit(form)" >
+        <div class="row">
+            <div class="col-4">
+                <div class="form-group">
+                    <input type="text" name="name" [(ngModel)]="usersetting.name" placeholder=" Enter your Name.." class="form-control" required>
+
+                </div>
+                <div class="form-group">
+                    <input type="phone" name="phone" [(ngModel)]="usersetting.phone" placeholder="phone no:9876543210" class="form-control" required>
+
+                </div>
+                <div class="form-group">
+                    <input type="mail" name="mail" [(ngModel)]="usersetting.mail" placeholder="Email@gmail.com" class="form-control" required> 
+                </div>
+
+            </div>
+            <div class="col-4">
+                <div class="form-group">
+                    <select name="gender" [(ngModel)]="usersetting.gender" aria-placeholder="Gender" class="form-control" required>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                    </select>
+
+                </div>
+                <div class="form-group">
+                    <select name="select1" [(ngModel)]="usersetting.select1" aria-placeholder="Address Type" class="form-control" required >
+                        <option value="Refernce">Refernce</option>
+                        <option value="No">No</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <select name="select2" [(ngModel)]="usersetting.select2" aria-placeholder="Salary" class="form-control" required >
+                        <option value="Above">Above</option>
+                        <option value="Below">Below</option>
+                    </select>
+                </div>
+            </div>
+
+        </div>
+        <button type="submit"  [disabled]="!form.valid" class="btn btn-outline-dark">Save Here..!!</button>
+        <button type="button" class="btn btn-danger" *ngIf="editMode" (click)="onDeleteUser()"> DELETE </button>
+
+        <!-- <input type="button" value="Save Here..!!" [disabled]="!form.valid" class="btn btn-outline-dark"> -->
+
+    </form>
+    <div *ngFor="let user of users; let i=index">
+        <p (click)="onEditUser(i)" style="cursor:pointer"> {{ user.name}} </p>
+    </div>
+</div>
+
+
+
+
+
+<p>signup works!</p>

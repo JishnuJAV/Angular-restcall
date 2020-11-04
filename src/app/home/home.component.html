@@ -1,0 +1,27 @@
+<div class="container">
+    <h2>WeLCOmE..!!</h2>
+    <table class="table table-borderless table-hover">
+        <thead>
+            <tr>
+                <th>name</th>
+                <th>phone</th>
+                <th>mail</th>
+                <th>gender</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let user of users; let i=index">
+                <td (click)="onEditUser(i)" style="cursor:pointer">{{user.name}}</td>
+                <td (click)="onEditUser(i)" style="cursor:pointer">{{user.phone}}</td>
+                <td (click)="onEditUser(i)" style="cursor:pointer">{{user.mail}}</td>
+                <td (click)="onEditUser(i)" style="cursor:pointer">{{user.gender}}</td>
+
+            </tr>
+            <tr *ngIf="!users.length">
+                No users
+
+            </tr>
+        </tbody>
+    </table>
+
+</div>
